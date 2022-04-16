@@ -2,9 +2,24 @@
 var largura = 0;
 var altura = 0;
 var vidas = 1;
-var tempo = 5;
+var tempo = 15;
+var criaMosquitoTempo = 1500;
 
 
+var nivel = window.location.search
+nivel = nivel.replace('?', '');
+console.log(nivel)
+
+if (nivel === 'Facil'){
+    criaMosquitoTempo = 1500
+    console.log(nivel)
+}else if (nivel ==='Normal'){
+    criaMosquitoTempo = 1000
+    console.log(nivel)
+}else if(nivel ==='Dificil'){
+    criaMosquitoTempo = 750
+    console.log(nivel)
+}
 
 
 
@@ -17,8 +32,7 @@ var cronometro = setInterval(function(){
         console.log(tempo)
         if(tempo <= 0){
             clearInterval(cronometro)
-        
-            alert('vitoria')
+            window.location.href = '../html/youWon.html'
 
         } else {
             document.getElementById('cronometro').innerHTML = tempo;}
@@ -111,4 +125,4 @@ function posicaoaleatoria(){
 
     setInterval(function(){
         posicaoaleatoria();
-    }, 1000);
+    }, criaMosquitoTempo);
